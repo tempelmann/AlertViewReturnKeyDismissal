@@ -7,13 +7,24 @@
 //
 
 #import "ViewController.h"
-#import "UIAlertView+ReturnKey.h"
+#import "KeyCommandsView.h"
 
 @interface ViewController ()
 	@property (nonatomic, strong) UIAlertView *theAlertView;
+	@property (nonatomic, strong) KeyCommandsView *keyCommandsView;
 @end
 
 @implementation ViewController
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	
+	#if 0
+		// if we show the alert here, then we'll get the key press callbacks, oddly, but we want to be able to show the dialog later and have it still work
+		[self showAlert:NULL];
+	#endif
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -22,46 +33,51 @@
 
 - (BOOL)canBecomeFirstResponder
 {
-	NSLog(@"canBecomeFirstResponder invoked");
+	NSLog(@"Main view's canBecomeFirstResponder invoked");
 	return YES;
 }
 
 - (NSArray *)keyCommands
 {
-	NSLog(@"keyCommands invoked");
-    return @[[UIKeyCommand keyCommandWithInput:@"\r" modifierFlags:0 action:@selector(returnPressed)]];
+	NSLog(@"Main view's keyCommands invoked");
+	return @[[UIKeyCommand keyCommandWithInput:@"\r" modifierFlags:0 action:@selector(returnPressed)]];
 }
 
 - (IBAction)showAlert:(id)sender
 {
 	self.theAlertView = [[UIAlertView alloc] initWithTitle:@"title" message:@"msg" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+
+	#if 1
+		// Trying Francescu's idea:
+		self.keyCommandsView = [[KeyCommandsView alloc] initWithFrame:CGRectMake(-1, -1, 1, 1)];
+		[self.theAlertView addSubview:self.keyCommandsView];
+		self.keyCommandsView.alertView = self.theAlertView;
+	#endif
+
 	[self.theAlertView show];
 	NSLog(@"Alert getting shown...");
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+	[self.keyCommandsView resignFirstResponder];
 	self.theAlertView = NULL;
 	NSLog(@"Alert is closed");
 }
 
 - (void)didPresentAlertView:(UIAlertView *)alertView
 {
-	NSLog(@"Alert has appeared; Setting first responder again");
-	[self becomeFirstResponder];
-	
-	// let's try that again a bit later in case our caller has reset it - doesn't help either, though:
-	[self performSelector:@selector(becomeFirstResponder) withObject:NULL afterDelay:0.1];
+	NSLog(@"Alert has appeared");
+	if (self.keyCommandsView) {
+		[self.keyCommandsView becomeFirstResponder];
+	} else {
+		[self becomeFirstResponder];
+	}
 }
 
 - (void)returnPressed
 {
-	if (self.theAlertView) {
-		NSLog(@"Success! Return key was pressed");
-		[self.theAlertView dismissWithClickedButtonIndex:0 animated:YES];
-	} else {
-		NSLog(@"Return key was pressed");
-	}
+	NSLog(@"Return key was pressed in main view");
 }
 
 @end

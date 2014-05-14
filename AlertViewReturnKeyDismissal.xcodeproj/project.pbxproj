@@ -16,7 +16,7 @@
 		A43D350619235D0C0057241C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43D350419235D0C0057241C /* Main.storyboard */; };
 		A43D350C19235D0C0057241C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A43D350B19235D0C0057241C /* ViewController.m */; };
 		A43D350E19235D0C0057241C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43D350D19235D0C0057241C /* Images.xcassets */; };
-		A43D352C1923615F0057241C /* UIAlertView+ReturnKey.m in Sources */ = {isa = PBXBuildFile; fileRef = A43D352B1923615F0057241C /* UIAlertView+ReturnKey.m */; };
+		A43D352F192384950057241C /* KeyCommandsView.m in Sources */ = {isa = PBXBuildFile; fileRef = A43D352E192384950057241C /* KeyCommandsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +35,8 @@
 		A43D350B19235D0C0057241C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A43D350D19235D0C0057241C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A43D351419235D0C0057241C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		A43D352A1923615F0057241C /* UIAlertView+ReturnKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+ReturnKey.h"; sourceTree = "<group>"; };
-		A43D352B1923615F0057241C /* UIAlertView+ReturnKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+ReturnKey.m"; sourceTree = "<group>"; };
+		A43D352D192384950057241C /* KeyCommandsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyCommandsView.h; sourceTree = "<group>"; };
+		A43D352E192384950057241C /* KeyCommandsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyCommandsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +89,8 @@
 				A43D350419235D0C0057241C /* Main.storyboard */,
 				A43D350A19235D0C0057241C /* ViewController.h */,
 				A43D350B19235D0C0057241C /* ViewController.m */,
-				A43D352A1923615F0057241C /* UIAlertView+ReturnKey.h */,
-				A43D352B1923615F0057241C /* UIAlertView+ReturnKey.m */,
+				A43D352D192384950057241C /* KeyCommandsView.h */,
+				A43D352E192384950057241C /* KeyCommandsView.m */,
 				A43D350D19235D0C0057241C /* Images.xcassets */,
 				A43D34F919235D0C0057241C /* Supporting Files */,
 			);
@@ -175,8 +175,8 @@
 			files = (
 				A43D350C19235D0C0057241C /* ViewController.m in Sources */,
 				A43D350319235D0C0057241C /* AppDelegate.m in Sources */,
+				A43D352F192384950057241C /* KeyCommandsView.m in Sources */,
 				A43D34FF19235D0C0057241C /* main.m in Sources */,
-				A43D352C1923615F0057241C /* UIAlertView+ReturnKey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
